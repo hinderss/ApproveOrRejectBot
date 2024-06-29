@@ -28,8 +28,10 @@ ApproveOrRejectBot is a Telegram bot designed to streamline document submission 
 
 - `/start` - Initiate interaction with ApproveOrRejectBot.
 - `/stat` - View your document submission statistics. Users can see the number of documents submitted and approved.
-- `/adminstat` - View admin-specific statistics. Administrators can see overall statistics for each user, including the number of documents reviewed and the number of approvals.
+- `/adminstat` - {admin command} View admin-specific statistics. Administrators can see overall statistics for each user, including the number of documents reviewed and the number of approvals.
+- `/vipe` - {admin command} Reset the statistics for users.
 - `/lang` - Change the language of the bot interface.
+- `/help` - Get a list of available commands and usage instructions.
 
 ## Installation
 
@@ -52,6 +54,7 @@ ApproveOrRejectBot is a Telegram bot designed to streamline document submission 
    BOT_TOKEN="your_telegram_bot_token"
    ADMIN_CHAT_ID="your_admin_chat_id"
    SQLALCHEMY_DATABASE_URI=sqlite+aiosqlite:///instance/data.db
+   LANGUAGES_INI=app/language/languages.ini
    ```
 
    Alternatively, you can export these variables in your shell environment:
@@ -59,6 +62,7 @@ ApproveOrRejectBot is a Telegram bot designed to streamline document submission 
    export BOT_TOKEN="your_telegram_bot_token"
    export ADMIN_CHAT_ID="your_admin_chat_id"
    export SQLALCHEMY_DATABASE_URI=sqlite+aiosqlite:///instance/data.db
+   export LANGUAGES_INI=app/language/languages.ini 
    ```
    
    Tips:

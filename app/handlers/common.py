@@ -5,6 +5,7 @@ from aiogram.filters import CommandStart
 from aiogram.types import Message
 from aiogram.utils.markdown import hbold
 from aiogram.filters import Command
+from aiogram.enums import ParseMode
 
 from sqlalchemy.exc import NoResultFound, SQLAlchemyError
 
@@ -52,6 +53,16 @@ async def callbacks_language(callback: types.CallbackQuery):
         print(f"Unknown error: {e}")
     finally:
         await callback.message.delete()
+
+
+@router.message(Command("help"))
+async def command_lang_handler(message: Message) -> None:
+    try:
+        user: User = await db.get_user(message.from_user.id)
+        language = user.language
+    except SQLAlchemyError:
+        language = lang.default_language_code
+    await message.answer(text=f"{lang.get(language, 'help_content')}", parse_mode=ParseMode.MARKDOWN_V2)
 
 
 @router.message(Command("stat"))
